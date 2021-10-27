@@ -38,3 +38,8 @@ Table orders {
     status varchar
     create_date datetime [default: `now()`]
 }
+Table checkout_items {
+    cust_id int [ref: > U.id]
+    prod_id int [ref: > products.id]
+    quantity int
+}
