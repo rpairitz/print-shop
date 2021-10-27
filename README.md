@@ -1,3 +1,11 @@
+# 3D Print Shop App, Created with React and Parse
+
+## Component Tree Diagram
+<img width="525" alt="image" src="https://user-images.githubusercontent.com/61869140/139151226-08deaca5-703b-4a58-a34b-05ee7e0e7fec.png">
+
+## UML Diagram
+<img width="864" alt="IMG_0875" src="https://user-images.githubusercontent.com/61869140/139151501-48f22650-916e-410f-8820-3e4ea111867f.png">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
