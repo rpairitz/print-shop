@@ -1,0 +1,19 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "name": "Test Boat",
+        "image": "./ProductImages/3DBenchy.png",
+        "cost": 20,
+        "multicolor": 0
+      },
+      {
+        "id": 2,
+        "name": "Nefertiti",
+        "image": "./ProductImages/Nefertiti.jpg",
+        "cost": 35,
+        "multicolor": 0
+      }
+    ]
+  }
+  
