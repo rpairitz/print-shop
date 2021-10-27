@@ -1,0 +1,40 @@
+Project print_shop {
+    database_type: 'NoSQL'
+}
+Table users as U {
+    id int [pk, increment]
+    user_name varchar
+    first_name varchar
+    last_name varchar
+    note: "table 'users' contains user information"
+}
+Table merchants {
+    id int [pk]
+    admin_id int [ref: > U.id]
+    name varchar
+}
+Table products {
+    id int [pk]
+    name varchar
+    price int
+    stock int
+    category_id int [ref: > categories.id]
+    merchant_id int [ref: > merchants.id]
+}
+Table categories {
+    id int [pk]
+    name varchar
+    parent_id int [ref: > categories.id]
+}
+Table order_items {
+    order_id int [ref: > orders.id]
+    prod_id int [ref: > products.id]
+    quantity int
+    note: "items in an order"
+}
+Table orders {
+    id int [pk]
+    user_id int [ref: > U.id]
+    status varchar
+    create_date datetime [default: `now()`]
+}
