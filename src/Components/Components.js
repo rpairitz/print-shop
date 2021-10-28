@@ -2,6 +2,12 @@ import { SearchBar } from "./Search/SearchBar.js";
 import { ContactUs } from "./Contact/ContactUs.js";
 import { SignUp } from "./SignUp/SignUp.js";
 import { ProductList } from "./Main/ProductList.js";
+import { NavigationBar } from "./NavigationBar/NavigationBar.js";
+import { 
+    BrowserRouter as Router, 
+    Route,
+    Switch
+    } from "react-router-dom";
 
 const Components = () => {
 
@@ -14,12 +20,14 @@ const Components = () => {
     // }, []);
 
     return (
-        <>
-        <SearchBar />
-        <ProductList />
-        <ContactUs />
-        <SignUp />
-        </>
+        <Router>
+            <Switch>
+                <Route path="/Sign-Up" component={SignUp} />
+            </Switch>
+            <SearchBar />
+            <Products />
+            <ContactUs />
+        </Router>
     );
 };
 
