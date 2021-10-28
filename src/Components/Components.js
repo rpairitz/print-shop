@@ -1,7 +1,7 @@
-import { SearchBar } from "./Main/SearchBar.js";
-import { ContactUs } from "./Main/ContactUs.js";
-import { SignUp } from "./Main/SignUp.js";
-import { Products } from "./Main/Products.js";
+import { SearchBar } from "./Search/SearchBar.js";
+import { ContactUs } from "./Contact/ContactUs.js";
+import { SignUp } from "./SignUp/SignUp.js";
+import { ProductList } from "./Main/ProductList.js";
 
 const Components = () => {
 
@@ -16,7 +16,7 @@ const Components = () => {
     return (
         <>
         <SearchBar />
-        <Products />
+        <ProductList />
         <ContactUs />
         <SignUp />
         </>
