@@ -6,7 +6,7 @@ export function NavigationBar() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Shop</Link>
+                        <Link to="/Main">Shop</Link>
                     </li>
                     <li>
                         <Link to="/SignUp">Sign Up Here</Link>

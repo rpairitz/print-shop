@@ -22,12 +22,13 @@ const Components = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/" exact components={ProductList} />
+                <Route path="/Main" exact components={ProductList} />
                 <Route path="/SignUp" component={SignUp} />
                 <Route path="/SearchBar" component={SearchBar} />
                 <Route path="/ContactUs" component={ContactUs}/>
             </Switch>
             <NavigationBar />
+            <ProductList />
         </Router>
     );
 };
