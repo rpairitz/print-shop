@@ -1,7 +1,7 @@
-import { SearchBar } from "./Main/SearchBar.js";
-import { ContactUs } from "./Main/ContactUs.js";
+import { SearchBar } from "./Search/SearchBar.js";
+import { ContactUs } from "./Contact/ContactUs.js";
 import { SignUp } from "./SignUp/SignUp.js";
-import { Products } from "./Main/Products.js";
+import { ProductList } from "./Main/ProductList.js";
 import { NavigationBar } from "./NavigationBar/NavigationBar.js";
 import { 
     BrowserRouter as Router, 
@@ -20,7 +20,6 @@ const Components = () => {
     // }, []);
 
     return (
-        <>
         <Router>
             <Switch>
                 <Route path="/Sign-Up" component={SignUp} />
@@ -29,7 +28,6 @@ const Components = () => {
             <Products />
             <ContactUs />
         </Router>
-        </>
     );
 };
 
