@@ -3,14 +3,14 @@ import { ContactUs } from "./Contact/ContactUs.js";
 import { SignUp } from "./SignUp/SignUp.js";
 import { ProductList } from "./Main/ProductList.js";
 import { NavigationBar } from "./NavigationBar/NavigationBar.js";
+import { AuthModule } from "./Registration/Auth.js";
+
 import { 
     BrowserRouter as Router, 
     Route,
     Switch
     } from "react-router-dom";
 
-    //This is one I want to save
-    
 const Components = () => {
 
     // const [products, setProducts] = useState([]);
@@ -28,6 +28,7 @@ const Components = () => {
                 <Route path="/SignUp" component={SignUp} />
                 <Route path="/SearchBar" component={SearchBar} />
                 <Route path="/ContactUs" component={ContactUs}/>
+                <Route path="/Register" component={AuthModule}/>
             </Switch>
             <NavigationBar />
             <ProductList />

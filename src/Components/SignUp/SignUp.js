@@ -14,13 +14,14 @@ export function SignUp() {
         id="AS"
         required
       />
-      <button type="submit">Sign Up</button>
+      
     </p>
     <div>
       <p>
         By creating an account you agree to our
         <a href="#"> Terms and Conditions</a>.
       </p>
+      <button type="submit">Sign Up</button>
     </div>
         </>
     )
