@@ -24,7 +24,7 @@ const AuthRegister = () => {
                 setAdd(false);
             });
         }
-    }, [newUser, setAdd]);
+    }, [newUser, add]);
 
     const onChangeHandler = (e) => {
         e.preventDefault();
@@ -42,7 +42,6 @@ const AuthRegister = () => {
 
     return (
         <div>
-            <h1>HEllo from AuthRegister</h1>
             <AuthForm
                 user={newUser}
                 onChange={onChangeHandler}

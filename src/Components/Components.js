@@ -3,7 +3,7 @@ import { ContactUs } from "./Contact/ContactUs.js";
 import { SignUp } from "./SignUp/SignUp.js";
 import { ProductList } from "./Main/ProductList.js";
 import { NavigationBar } from "./NavigationBar/NavigationBar.js";
-import { AuthModule } from "./Registration/Auth.js";
+import AuthRegister from "./Auth/AuthRegister.js";
 
 import { 
     BrowserRouter as Router, 
@@ -28,7 +28,7 @@ const Components = () => {
                 <Route path="/SignUp" component={SignUp} />
                 <Route path="/SearchBar" component={SearchBar} />
                 <Route path="/ContactUs" component={ContactUs}/>
-                <Route path="/Register" component={AuthModule}/>
+                <Route path="/Register" component={AuthRegister}/>
             </Switch>
             <NavigationBar />
             <ProductList />

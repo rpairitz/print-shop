@@ -17,6 +17,9 @@ export function NavigationBar() {
                     <li>
                         <Link to="/SearchBar">Search Bar</Link>
                     </li>
+                    <li>
+                        <Link to="/Register">Registration</Link>
+                    </li>
                 </ul>
             </nav>
         </footer>
