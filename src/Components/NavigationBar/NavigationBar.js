@@ -6,19 +6,13 @@ export function NavigationBar() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/Main">Shop</Link>
+                        <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/SignUp">Sign Up Here</Link>
+                        <Link to="/contact">Contact Us</Link>
                     </li>
                     <li>
-                        <Link to="/ContactUs">Contact Us</Link>
-                    </li>
-                    <li>
-                        <Link to="/SearchBar">Search Bar</Link>
-                    </li>
-                    <li>
-                        <Link to="/Register">Registration</Link>
+                        <Link to="/register">Registration</Link>
                     </li>
                 </ul>
             </nav>
