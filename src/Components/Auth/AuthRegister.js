@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import {useEffect, useState} from "react";
 import { createUser } from "./AuthService.js";
-import AuthForm from "./AuthForm.js";
+import AuthRegisterForm from "./AuthRegisterForm.js";
 
 const AuthRegister = () => {
     const [newUser, setUser] = useState({
@@ -42,11 +43,16 @@ const AuthRegister = () => {
 
     return (
         <div>
-            <AuthForm
+            <AuthRegisterForm
                 user={newUser}
                 onChange={onChangeHandler}
                 onSubmit={onSubmitHandler}
                 />
+
+            <h3>Already have an account?</h3>
+            <Link to="/log-in">
+                <button>Log In</button>
+            </Link>
         </div>
     );
 };
