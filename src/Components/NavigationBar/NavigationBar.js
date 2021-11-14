@@ -12,7 +12,7 @@ export function NavigationBar() {
                         <Link to="/contact">Contact Us</Link>
                     </li>
                     <li>
-                        <Link to="/log-in">Log In</Link>
+                        <Link to="/shop">My Shop</Link>
                     </li>
                 </ul>
             </nav>

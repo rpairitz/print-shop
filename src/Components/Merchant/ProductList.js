@@ -1,11 +1,15 @@
 // TODO: import { getProductsByMerchant } from "../../Services/ShopService.js";
 import {useState,useEffect} from "react";
+//import { useParams } from "react-router";
 import {
     getAllProducts
 } from "../../Services/ShopService.js";
 
 // stateful parent component for rendering merchant products
-export function ProductList () {
+const ProductList = () => {
+    // TODO: use params for specific merchant products
+    // const {name} = useParams();
+
     // variable in state to hold array of Products; initial state: empty
     const [products, setProducts] = useState([]);
 
@@ -40,3 +44,5 @@ export function ProductList () {
         </div>
     );
 };
+
+export default ProductList;
