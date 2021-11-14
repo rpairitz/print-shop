@@ -2,7 +2,9 @@ import { SearchBar } from "./Main/SearchBar.js";
 import { ContactUs } from "./Contact/ContactUs.js";
 import { ProductList } from "./Main/ProductList.js";
 import { NavigationBar } from "./NavigationBar/NavigationBar.js";
+import MerchantProducts from "./Merchant/ProductList.js";
 import AuthRegister from "./Auth/AuthRegister.js";
+import AuthLogin from "./Auth/AuthLogin.js";
 
 import { 
     BrowserRouter as Router, 
@@ -21,10 +23,12 @@ const Components = () => {
                     so they will actually appear */}
                     <SearchBar />
                     <ProductList />
-                    <Redirect to="/" />
                 </Route>
                 <Route path="/contact" component={ContactUs}/>
+                <Route path="/log-in" component={AuthLogin}/>
                 <Route path="/register" component={AuthRegister}/>
+                {/*<Route path="/merchant/:name" component={MerchantProducts}/>*/}
+                <Redirect to="/" />
             </Switch>
         </Router>
     );

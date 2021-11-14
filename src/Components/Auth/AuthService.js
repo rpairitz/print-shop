@@ -18,3 +18,15 @@ export const createUser = (newUser) => {
         alert(`Error: ${error.message}`);
       });
   };
+
+export const authenticateUser = (user) => {
+  // TODO: get user password by email (if exists),
+  // then compare to pwd given
+  return Parse.User.logIn(user.username, user.password)
+    .then((userLoggedIn) => {
+      return userLoggedIn;
+    })
+    .catch((error) => {
+      alert(`Error: ${error.message}`);
+    });
+};
