@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 export function NavigationBar() {
     return (
         <footer>
-            <link href="Navstyles.css" type="text/css" rel="stylesheet" />
             <nav>
                 <div class="row">
                     <div class="col-md-4">

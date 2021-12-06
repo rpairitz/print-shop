@@ -58,7 +58,7 @@ const Components = () => {
                 <Route path="/contact" component={ContactUs}/>
                 <Route path="/log-in" component={AuthLogin}/>
                 <Route path="/register" component={AuthRegister}/>
-                <Route path="/Product" component={DetailedView}/>
+                <Route path="/Product/:id" component={DetailedView}/>
                 <ProtectedRoute path="/shop" component={MerchantProducts} flag={flag}/>
                 <Redirect to="/log-in" />
             </Switch>

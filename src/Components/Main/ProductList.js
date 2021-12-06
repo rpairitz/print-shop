@@ -25,8 +25,7 @@ export function ProductList () {
                         <div class="row">
                             {products.map((product) => ( 
                                     <div class="col-md-4">
-                                            {/* display product name; display image with styling later */}
-                                            <h4 key={product.id}><Link to="/Product">{product.get("name")}</Link></h4>
+                                            <h4 key={product.id}><Link to={{pathname: `/Product/${product.id}`, state: {product: product}}}> {product.get("name")} </Link></h4>
 
                                             <img src={product.get("image")._url} alt="" style={{width: "250px"}}/>
                                             <br/>
