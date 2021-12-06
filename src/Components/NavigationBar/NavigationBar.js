@@ -4,17 +4,17 @@ export function NavigationBar() {
     return (
         <footer>
             <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact">Contact Us</Link>
-                    </li>
-                    <li>
-                        <Link to="/shop">My Shop</Link>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="col-md-4">
+                    <Link to="/">Home</Link>
+                </div>
+                <div class="col-md-4">
+                    <Link to="/contact">Contact Us</Link>
+                </div>
+                <div class="col-md-4">
+                    <Link to="/shop">My Shop</Link>
+                </div>
+            </div>                
             </nav>
         </footer>
     );
