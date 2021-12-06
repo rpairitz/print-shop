@@ -1,6 +1,14 @@
+import { SearchBar } from "../Main/SearchBar.js";
 
 export function DetailedView() {
     return (
-        <p> This is the detailed view</p>
+        <>
+            <SearchBar/>
+            <a href="/">
+            <button type="submit">Return Home</button>
+            </a>
+            <p> This is the detailed view</p>
+            
+        </>
     );
 };
