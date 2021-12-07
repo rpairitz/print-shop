@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import {useEffect, useState} from "react";
 import { authenticateUser } from "./AuthService.js";
 import AuthLoginForm from "./AuthLoginForm.js";
+import {
+  Redirect
+  } from "react-router-dom";
+import Parse from "parse";
 
 const AuthLogin = () => {
   const [user, setUser] = useState({
@@ -39,8 +43,13 @@ const AuthLogin = () => {
     setLogin(true);
   };
 
+  const currentUser = Parse.User.current();
+
   return (
     <div>
+      {currentUser ? (
+        <Redirect to='/shop' />
+      ):''}
       <AuthLoginForm
                 user={user}
                 onChange={onChangeHandler}

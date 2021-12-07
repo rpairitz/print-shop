@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import {useEffect, useState} from "react";
 import { createUser } from "./AuthService.js";
 import AuthRegisterForm from "./AuthRegisterForm.js";
+import {
+    Redirect
+    } from "react-router-dom";
+  import Parse from "parse";
 
 const AuthRegister = () => {
     const [newUser, setUser] = useState({
@@ -41,8 +45,13 @@ const AuthRegister = () => {
         setAdd(true);
     };
 
+    const currentUser = Parse.User.current();
+
     return (
         <div>
+            {currentUser ? (
+                <Redirect to='/shop' />
+            ):''}
             <AuthRegisterForm
                 user={newUser}
                 onChange={onChangeHandler}

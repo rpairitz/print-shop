@@ -12,10 +12,11 @@ import {
     Switch,
     Redirect
     } from "react-router-dom";
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import Parse from "parse"; // how else should we do all above the return?
 
 const Components = () => {
+    /*
     const [flag, setFlag] = useState(false);
     const [user, setUser] = useState();
     //Parse.User.logOut();
@@ -31,17 +32,23 @@ const Components = () => {
             setFlag(false);
         }
     }, [user]);
+    */
 
     // for some reason, when not authenticated initially, this won't
     // allow to be authenticated after login
     // does this have to do with how current function retrieves user
     // from async storage?
+    /*
     useEffect(() => {
-        Parse.User.currentAsync().then((currUser) => {
+        Parse.User.current().then((currUser) => {
             console.log(currUser);
-            setUser(currUser);
+            Parse.User.logOut();
+            //setUser(currUser);
         });
     }, []);
+    */
+    //setFlag(true);
+    const currentUser = Parse.User.current();
 
     return (
         <Router>
@@ -56,7 +63,8 @@ const Components = () => {
                 <Route path="/contact" component={ContactUs}/>
                 <Route path="/log-in" component={AuthLogin}/>
                 <Route path="/register" component={AuthRegister}/>
-                <ProtectedRoute path="/shop" component={MerchantProducts} flag={flag}/>
+                <Route path="/shop" component={MerchantProducts} />
+                <ProtectedRoute path="/shop" component={MerchantProducts}/>
                 <Redirect to="/log-in" />
             </Switch>
         </Router>
