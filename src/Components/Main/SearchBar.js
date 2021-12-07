@@ -1,9 +1,9 @@
 export function SearchBar() {
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10">
-                    <label for="Main Search"></label>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-10">
+                    <label htmlFor="Main Search"></label>
                     <input 
                         type="text"
                         placeholder="Search for cool prints here!"
