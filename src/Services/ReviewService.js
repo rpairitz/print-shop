@@ -5,7 +5,8 @@ import Parse from "parse";
 export const getAllReviews = (id) => {
     const review = Parse.Object.extend("review"); 
     const query = new Parse.Query(review);
-    return query.find().then((review) => {
+    return query.equalTo("productId", id).find().then((review) => {
+        //return query.find().then((review) => {
         // returns array of review objects from server
             return review;
     });
