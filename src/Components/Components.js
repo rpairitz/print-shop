@@ -2,6 +2,7 @@ import { SearchBar } from "./Main/SearchBar.js";
 import { ContactUs } from "./Contact/ContactUs.js";
 import { ProductList } from "./Main/ProductList.js";
 import { NavigationBar } from "./NavigationBar/NavigationBar.js";
+import { DetailedView } from "./DetailedView/DetailedView.js";
 import MerchantProducts from "./Merchant/ProductList.js";
 import AuthRegister from "./Auth/AuthRegister.js";
 import AuthLogin from "./Auth/AuthLogin.js";
@@ -44,6 +45,7 @@ const Components = () => {
     }, []);
 
     return (
+        
         <Router>
             <NavigationBar />
             <Switch>
@@ -56,6 +58,7 @@ const Components = () => {
                 <Route path="/contact" component={ContactUs}/>
                 <Route path="/log-in" component={AuthLogin}/>
                 <Route path="/register" component={AuthRegister}/>
+                <Route path="/Product/:id" component={DetailedView}/>
                 <ProtectedRoute path="/shop" component={MerchantProducts} flag={flag}/>
                 <Redirect to="/log-in" />
             </Switch>

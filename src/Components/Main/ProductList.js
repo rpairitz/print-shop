@@ -2,6 +2,7 @@ import {
     getAllProducts
 } from "../../Services/ShopService.js";
 import {useState,useEffect} from "react";
+import { Link } from "react-router-dom";
 
 // stateful parent component for rendering Product data down to child
 export function ProductList () {
@@ -18,20 +19,20 @@ export function ProductList () {
 
     return (
         <div>
-            <p> Within ProductList component</p>
             <div>
                 {products.length > 0 && (
                     <ul>
-                        {products.map((product) => ( 
-                            <div>
-                                <span>
-                                    {/* display product name; display image with styling later */}
-                                    <li key={product.id}>{product.get("name")}</li>{""}
-                                    {/* want to add button to add product to cart/checkout later (in a separate service for Checkout) */}
-                                    <button>Add to Cart</button>
-                                </span>
-                            </div>
-                        ))}
+                        <div class="row">
+                            {products.map((product) => ( 
+                                    <div class="col-md-4">
+                                            <h4 key={product.id}><Link to={{pathname: `/Product/${product.id}`, state: {product: product}}}> {product.get("name")} </Link></h4>
+
+                                            <img src={product.get("image")._url} alt="" style={{width: "250px"}}/>
+                                            <br/>
+                                            <button>Add to Cart</button>
+                                    </div>    
+                            ))}
+                        </div>
                     </ul>
                 )}
             </div>
