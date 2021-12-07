@@ -18,25 +18,12 @@ Table products {
     name varchar
     price int
     stock int
-    category_id int [ref: > categories.id]
     merchant_id int [ref: > merchants.id]
 }
-Table categories {
+Table reviews {
     id int [pk]
-    name varchar
-    parent_id int [ref: > categories.id]
-}
-Table order_items {
-    order_id int [ref: > orders.id]
+    write_up varch
     prod_id int [ref: > products.id]
-    quantity int
-    note: "items in an order"
-}
-Table orders {
-    id int [pk]
-    user_id int [ref: > U.id]
-    status varchar
-    create_date datetime [default: `now()`]
 }
 Table checkout_items {
     cust_id int [ref: > U.id]

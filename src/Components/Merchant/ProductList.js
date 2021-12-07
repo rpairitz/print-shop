@@ -1,6 +1,8 @@
 // TODO: import { getProductsByMerchant } from "../../Services/ShopService.js";
 import {useState,useEffect} from "react";
-//import { useParams } from "react-router";
+import { useParams } from "react-router";
+import ProtectedRoute from "../../Common/ProtectedRoute.js";
+import Parse from "parse";
 import {
     getAllProducts
 } from "../../Services/ShopService.js";
@@ -8,7 +10,7 @@ import {
 // stateful parent component for rendering merchant products
 const ProductList = () => {
     // TODO: use params for specific merchant products
-    // const {name} = useParams();
+    //const {admin} = useParams();
 
     // variable in state to hold array of Products; initial state: empty
     const [products, setProducts] = useState([]);
@@ -21,6 +23,13 @@ const ProductList = () => {
             setProducts(products);
         });
     }, []);
+
+    const currentUser = Parse.User.current();
+    if (!currentUser){
+        return (
+            <ProtectedRoute exact path="/shop" flag={currentUser} component={ProductList}/>
+        )
+    }
 
     return (
         <div>
