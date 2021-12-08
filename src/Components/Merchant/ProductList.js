@@ -1,6 +1,9 @@
-import { getProductsByMerchant, removeProduct } from "../../Services/ShopService.js";
+import { 
+    getProductsByMerchant, removeProduct, createProduct 
+} from "../../Services/ShopService.js";
 import {useState,useEffect} from "react";
 import ProtectedRoute from "../../Common/ProtectedRoute.js";
+import ProductForm from "./ProductForm.js";
 import Parse from "parse";
 import { Link } from "react-router-dom";
 
@@ -12,6 +15,15 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     // flag in the state to watch for delete update
     const [removeId, setRemoveId] = useState('');
+    // variable in state to hold new product info
+    const [newProduct, setNewProduct] = useState({
+        name: "",
+        price: "",
+        stockQty: "",
+        image: ""
+    });
+    // flag to trigger add product
+    const [addProduct, setAddProduct] = useState(false);
 
     // when page loads, run useEffect to get asynchronous data to render
     useEffect(()=> {
@@ -33,11 +45,39 @@ const ProductList = () => {
                 });
             });
         }
-    }, [removeId]);
+    }, [currentUser, removeId]);
+
+    // useEffect for updating state when the addProduct flag is set
+    useEffect(() => {
+        if (newProduct && addProduct){
+            console.log(newProduct);
+            createProduct(currentUser.id, newProduct).then(() => {
+                setAddProduct(false);
+                getProductsByMerchant(currentUser.id).then((products) => {
+                    setProducts(products);
+                });
+            });
+          }
+    }, [currentUser, newProduct, addProduct]);
 
     const removeHandler = (id) => {
         console.log('removeHandler');
         setRemoveId(id);
+    };
+
+    const onChangeHandler = (e) => {
+        e.preventDefault();
+        const { name, value: newValue } = e.target;
+        setNewProduct({
+            ...newProduct,
+            [name]: newValue
+        });
+        console.log(newProduct);
+    };
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        setAddProduct(true);
     };
 
     if (!currentUser){
@@ -48,8 +88,9 @@ const ProductList = () => {
 
     return (
         <div>
-            <h1>My Shop</h1>
-            <h2>Items</h2>
+            <h2>My Shop</h2>
+            <ProductForm newProduct={newProduct} onChange={onChangeHandler} onSubmit={onSubmitHandler}/>
+            <h3>Items</h3>
             <div key="divfirst">
             {products.length > 0 && (
                 <ul key="ul">
@@ -59,7 +100,6 @@ const ProductList = () => {
                                         <h4 key={product.id}><Link key="link" to={{pathname: `/Product/${product.id}`, state: {product: product}}}> {product.get("name")} </Link></h4>
                                         <img key="img" src={product.get("image")._url} alt="" style={{width: "250px"}}/>
                                         <br key="br"/>
-                                        <button key="button">Edit Item</button>
                                         <button key="button" onClick={() => removeHandler(product.id)}>Delete Item</button>
                                 </div>    
                         ))}
