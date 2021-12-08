@@ -25,8 +25,3 @@ Table reviews {
     write_up varch
     prod_id int [ref: > products.id]
 }
-Table checkout_items {
-    cust_id int [ref: > U.id]
-    prod_id int [ref: > products.id]
-    quantity int
-}
