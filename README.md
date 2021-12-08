@@ -1,10 +1,11 @@
 # 3D Print Shop App, Created with React and Parse
 
 ## Component Tree Diagram
-<img width="525" alt="image" src="https://user-images.githubusercontent.com/61869140/139151226-08deaca5-703b-4a58-a34b-05ee7e0e7fec.png">
+<img width="465" alt="image" src="https://user-images.githubusercontent.com/61869140/145291803-a2e0a831-9054-4558-b502-ec8ff2553bab.png">
 
 ## UML Diagram
-<img width="864" alt="IMG_0875" src="https://user-images.githubusercontent.com/61869140/139151501-48f22650-916e-410f-8820-3e4ea111867f.png">
+### (Note: We used dbdocs.io to generate our UML diagram, which does not support the Pointer type. All fields in the diagram with the supposed "int" data type on the many side of a relationship are in fact pointers.)
+<img width="871" alt="image" src="https://user-images.githubusercontent.com/61869140/145290001-88d80b3c-cbce-408d-9049-861b003298d5.png">
 
 # Getting Started with Create React App
 
