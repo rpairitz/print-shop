@@ -33,6 +33,7 @@ export const getProductsByMerchant = (adminId) => {
         }
         // get array of this merchant's products
         return prodQuery.equalTo("merchantID", merchantPointer).find().then((products) => {
+            console.log(products[0].get("image")); // testing to get file object metadata for create
             return products;
         })
     });
@@ -49,14 +50,7 @@ export const removeProduct = (id) => {
 }
 
 // create product
-export const createProduct = (adminId, newProduct) => {
-    const Product = Parse.Object.extend("Product"); // Product class
-    const product = new Product();
-    product.set("name", newProduct.name);
-    product.set("price", newProduct.price);
-    product.set("stockQty", newProduct.stockQty);
-    product.set("image", newProduct.image);
-
+export const createProduct = (adminId, newProduct, image) => {
     const adminPointer = {
         __type: 'Pointer',
         className: '_User',
@@ -64,22 +58,22 @@ export const createProduct = (adminId, newProduct) => {
     }
     const Merchant = Parse.Object.extend("Merchant"); // Merchant class
     const query = new Parse.Query(Merchant);
+    const Product = Parse.Object.extend("Product"); // Product class
+    const product = new Product();
     // find merchant with administrator id that matches adminId, then find all products for that merchant
-    const merchant = query.equalTo("adminID", adminPointer).find().then((merchant) => {
+    query.equalTo("adminID", adminPointer).find().then((merchant) => {
         console.log(merchant[0].toPointer());
+        product.set("merchantID", merchant[0].toPointer());
         return merchant[0].toPointer();
-        // console.log(merchant[0].id);
-        // return merchant[0].id;
-        // // console.log(merchant[0]);
-        // const merchantPointer = {
-        //     __type: 'Pointer',
-        //     className: 'Merchant',
-        //     objectId: merchant[0].id
-        // }
-        // return merchantPointer;
     });
-    console.log(merchant);
-    product.set("merchantID", merchant);
+    console.log(product.merchantPointer);
+    product.set("name", newProduct.name);
+    product.set("price", newProduct.price);
+    product.set("stockQty", newProduct.stockQty);
+    // set product image
+    const parseFile = new Parse.File(image.name, image);
+    console.log(parseFile);
+    product.set("image", parseFile);
   
     return product
       .save()

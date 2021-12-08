@@ -1,4 +1,4 @@
-const ProductForm = ({newProduct,onChange,onSubmit}) => {
+const ProductForm = ({newProduct,onChange,onSubmit,onFileChange}) => {
     return (
         <div>
             <h3>Create a New Product Listing</h3>
@@ -42,6 +42,7 @@ const ProductForm = ({newProduct,onChange,onSubmit}) => {
                     onChange={onChange}
                     name="stockQty"
                     min="0"
+                    step="1"
                     required
                 />
                 </div>
@@ -53,8 +54,8 @@ const ProductForm = ({newProduct,onChange,onSubmit}) => {
                         accept="image/png, image/jpeg, image/jpg"
                         className="form-control"
                         id="image-input"
-                        value={newProduct.image}
-                        onChange={onChange}
+                        /*value={newProduct.image}*/
+                        onChange={onFileChange}
                         name="image"
                         required
                     />

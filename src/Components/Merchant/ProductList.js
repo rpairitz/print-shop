@@ -18,10 +18,11 @@ const ProductList = () => {
     // variable in state to hold new product info
     const [newProduct, setNewProduct] = useState({
         name: "",
-        price: "",
-        stockQty: "",
-        image: ""
+        price: 0.00,
+        stockQty: 0
     });
+    // state variable for holding the image to upload with the newProduct
+    const [selectedFile, setSelectedFile] = useState();
     // flag to trigger add product
     const [addProduct, setAddProduct] = useState(false);
 
@@ -49,16 +50,24 @@ const ProductList = () => {
 
     // useEffect for updating state when the addProduct flag is set
     useEffect(() => {
-        if (newProduct && addProduct){
+        if (newProduct && selectedFile && addProduct){
             console.log(newProduct);
-            createProduct(currentUser.id, newProduct).then(() => {
+            console.log(selectedFile);
+            createProduct(currentUser.id, newProduct, selectedFile).then((productSaved) => {
                 setAddProduct(false);
-                getProductsByMerchant(currentUser.id).then((products) => {
-                    setProducts(products);
-                });
+                if (productSaved){
+                    setNewProduct({
+                        name: "",
+                        price: 0.00,
+                        stockQty: 0
+                    });
+                    getProductsByMerchant(currentUser.id).then((products) => {
+                        setProducts(products);
+                    });
+                }
             });
           }
-    }, [currentUser, newProduct, addProduct]);
+    }, [currentUser, newProduct, selectedFile, addProduct]);
 
     const removeHandler = (id) => {
         console.log('removeHandler');
@@ -68,10 +77,33 @@ const ProductList = () => {
     const onChangeHandler = (e) => {
         e.preventDefault();
         const { name, value: newValue } = e.target;
-        setNewProduct({
-            ...newProduct,
-            [name]: newValue
-        });
+        if (e.target.name == "price"){ 
+            // const name = e.target.name;
+            // const value = parseFloat(e.target.value);
+            // setNewProduct({
+            //     ...newProduct,
+            //     [name]: value
+            // });
+            // the above lines do the same as the below ones
+            // convert from string to float
+            setNewProduct({
+                ...newProduct,
+                [name]: parseFloat(newValue)
+            });
+        } 
+        else if (e.target.name == "stockQty"){
+            // convert from string to int
+            setNewProduct({
+                ...newProduct,
+                [name]: parseInt(newValue)
+            });
+        }
+        else{
+            setNewProduct({
+                ...newProduct,
+                [name]: newValue
+            });
+        }
         console.log(newProduct);
     };
 
@@ -79,6 +111,10 @@ const ProductList = () => {
         e.preventDefault();
         setAddProduct(true);
     };
+
+    const onFileChangeHandler = (e) => {
+        setSelectedFile(e.target.files[0]);
+    }
 
     if (!currentUser){
         return (
@@ -89,7 +125,8 @@ const ProductList = () => {
     return (
         <div>
             <h2>My Shop</h2>
-            <ProductForm newProduct={newProduct} onChange={onChangeHandler} onSubmit={onSubmitHandler}/>
+            <ProductForm newProduct={newProduct} onChange={onChangeHandler} onSubmit={onSubmitHandler}
+            onFileChange={onFileChangeHandler}/>
             <h3>Items</h3>
             <div key="divfirst">
             {products.length > 0 && (
