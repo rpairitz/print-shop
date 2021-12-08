@@ -13,10 +13,10 @@ import {
     Switch,
     Redirect
     } from "react-router-dom";
-import Parse from "parse";
+//import Parse from "parse";
 
 const Components = () => {
-    const currentUser = Parse.User.current();
+    //const currentUser = Parse.User.current();
 
     return (
         
