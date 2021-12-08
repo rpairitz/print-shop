@@ -2,27 +2,24 @@ import { getProductsByMerchant } from "../../Services/ShopService.js";
 import {useState,useEffect} from "react";
 import ProtectedRoute from "../../Common/ProtectedRoute.js";
 import Parse from "parse";
-import {
-    getAllProducts
-} from "../../Services/ShopService.js";
+import { Link } from "react-router-dom";
 
 // stateful parent component for rendering merchant products
 const ProductList = () => {
     const currentUser = Parse.User.current();
-    const userId = currentUser.id;
-    console.log(userId);
 
     // variable in state to hold array of Products; initial state: empty
     const [products, setProducts] = useState([]);
 
     // when page loads, run useEffect to get asynchronous data to render
     useEffect(()=> {
-        // TODO: getProductsByMerchant
-        getProductsByMerchant(userId).then((products) => {
-            console.log(products);
-            setProducts(products);
-        });
-    }, []);
+        if (currentUser){
+            getProductsByMerchant(currentUser.id).then((products) => {
+                console.log(products);
+                setProducts(products);
+            });
+        }
+    }, [currentUser]);
 
     if (!currentUser){
         return (
@@ -32,23 +29,24 @@ const ProductList = () => {
 
     return (
         <div>
-            <p> Within Merchant component</p>
-            <div>
-                {products.length > 0 && (
-                    <ul>
+            <h1>My Shop</h1>
+            <h2>Items</h2>
+            <div key="divfirst">
+            {products.length > 0 && (
+                <ul key="ul">
+                    <div key="div" className="row">
                         {products.map((product) => ( 
-                            <div>
-                                <span>
-                                    {/* display product name; display image with styling later */}
-                                    <li key={product.id}>{product.get("name")}</li>{""}
-                                    {/* want to add button to add product to cart/checkout later (in a separate service for Checkout) */}
-                                    <button>Add to Cart</button>
-                                </span>
-                            </div>
+                                <div key={product.name} className="col-md-4">
+                                        <h4 key={product.id}><Link key="link" to={{pathname: `/Product/${product.id}`, state: {product: product}}}> {product.get("name")} </Link></h4>
+                                        <img key="img" src={product.get("image")._url} alt="" style={{width: "250px"}}/>
+                                        <br key="br"/>
+                                        <button key="button">Add to Cart</button>
+                                </div>    
                         ))}
-                    </ul>
-                )}
-            </div>
+                    </div>
+                </ul>
+            )}
+        </div>
         </div>
     );
 };
