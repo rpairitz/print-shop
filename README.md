@@ -4,7 +4,7 @@
 <img width="465" alt="image" src="https://user-images.githubusercontent.com/61869140/145291803-a2e0a831-9054-4558-b502-ec8ff2553bab.png">
 
 ## UML Diagram
-### (Note: We used dbdocs.io to generate our UML diagram, which does not support the Pointer type. All fields in the diagram with the supposed "int" data type on the many side of a relationship are in fact pointers.)
+### (Note: We used dbdocs.io to generate our UML diagram, which does not support the Pointer type. All fields in the diagram with "_id" in their name and the supposed "int" data type are in fact supposed to be pointers.)
 <img width="871" alt="image" src="https://user-images.githubusercontent.com/61869140/145290001-88d80b3c-cbce-408d-9049-861b003298d5.png">
 
 # Getting Started with Create React App
