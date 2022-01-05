@@ -1,4 +1,3 @@
-TEST
 # 3D Print Shop App, Created with React and Parse
 
 ## Component Tree Diagram
